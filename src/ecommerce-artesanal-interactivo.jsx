@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Search, ShoppingBag, MapPin, MessageCircle, Star, Heart, 
-  Truck, RefreshCcw, ShieldCheck, Headphones, User, ShoppingCart, 
-  ChevronDown, Mail, Gift, Diamond, Menu, X, ChevronRight, Store, Trash2, Plus, Minus
+  Truck, ShieldCheck, User, ShoppingCart, 
+  ChevronDown, Mail, Gift, Diamond, Menu, X, ChevronLeft, ChevronRight, Store, Trash2, Plus, Minus, CheckCircle2
 } from 'lucide-react';
 
 export default function EcommerceArtesanal() {
@@ -13,6 +13,8 @@ export default function EcommerceArtesanal() {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const categoryTrackRef = useRef(null);
+  const productsTrackRef = useRef(null);
   
   // Nuevos estados para navegación
   const [currentView, setCurrentView] = useState('inicio'); // inicio, catalogo, empresas, perfilEmpresa
@@ -870,7 +872,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Fogón ancestral",
         "logo": "/images/drive_1_WssLISDOxozhAIf85bEEx9Z_tnNplmE.jpg",
         "descripcion": "No perder la tradición de los platos típicos Dar a conocer esa comida ancestral a los jóvenes",
-        "categoria": "Agrícola",
+        "categoria": "Alimentos",
         "productoEstrellaId": 1,
         "whatsapp": "573205874268"
     },
@@ -924,7 +926,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Cerditos pa' sumersed",
         "logo": "/images/default.svg",
         "descripcion": "Cerditos pa' sumersed",
-        "categoria": "Otros",
+        "categoria": "Alimentos",
         "productoEstrellaId": 13,
         "whatsapp": "573103487451"
     },
@@ -933,7 +935,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Delicarnes",
         "logo": "/images/default.svg",
         "descripcion": "Producir y comercializar productos artesanales de calidad y saludables En 5 años tener un lugar donde se produzca y comercialice los productos. Delicarnes",
-        "categoria": "Otros",
+        "categoria": "Alimentos",
         "productoEstrellaId": 15,
         "whatsapp": "573238142882"
     },
@@ -942,7 +944,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Asociación El Convite Campesino",
         "logo": "/images/default.svg",
         "descripcion": "Asociación El Convite Campesino",
-        "categoria": "Otros",
+        "categoria": "Agrícola",
         "productoEstrellaId": null,
         "whatsapp": ""
     },
@@ -996,7 +998,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Yira Paola Orozco Martinez",
         "logo": "/images/drive_1QdWs7kbUZkzvQqIAbg6lM542jyWnTPFW.jpg",
         "descripcion": "Nuestra Misión en \"Productos La Tita\" es transformar el maíz seleccionado de Boyacá en pasabocas crujientes de alto valor nutricional, ofreciendo una alternativa saludable, sabrosa y natural para toda la familia. Impulsamos el desarrollo local de Duitama mediante procesos responsables que preservan la pureza de nuestros ingredientes y las tradiciones culinarias de nuestra región. Nuestra visión en \"Productos La Tita\", es ser reconocidos como una empresa sostenible y con un fuerte impacto social en Boyacá, que conecte directamente el campo con el consumidor final; posicionando nuestros productos de maíz como la opción preferida por las familias en el departamento de Boyacá dónde la autenticidad, frescura y el verdadero valor de los productos naturales de nuestra tierra se resalten.",
-        "categoria": "Otros",
+        "categoria": "Alimentos",
         "productoEstrellaId": 27,
         "whatsapp": "573227341762"
     },
@@ -1005,7 +1007,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Herbalia",
         "logo": "/images/drive_1UiyYCOVe2zVHJa3fhsls-TX1Uuuv_o8d.jpg",
         "descripcion": "Productos 100% naturales Cuidar la piel y el cuidado personal",
-        "categoria": "Otros",
+        "categoria": "Artesanía",
         "productoEstrellaId": 28,
         "whatsapp": "573105600988"
     },
@@ -1023,7 +1025,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Monte Sion Plantas ornamentales y aromaticas",
         "logo": "/images/default.svg",
         "descripcion": "Aportar una experiencia sanadora. Recibir turista extranjeros y locales.",
-        "categoria": "Otros",
+        "categoria": "Agrícola",
         "productoEstrellaId": 32,
         "whatsapp": "573208180355"
     },
@@ -1077,7 +1079,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Granja el porvenir",
         "logo": "/images/drive_1FMtL1InN7aAJwVFSsm4yhANv7rxLvCNu.jpg",
         "descripcion": "Comida sana vida saludable",
-        "categoria": "Otros",
+        "categoria": "Alimentos",
         "productoEstrellaId": 43,
         "whatsapp": "573173023462"
     },
@@ -1086,7 +1088,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Asociación Amirenacer",
         "logo": "/images/default.svg",
         "descripcion": "Trabajas por el bienestar y la calidad de vida de las víctimas de desplazamiento forzado y familias vulnerables, promoviendo la solidaridad, el emprendimiento, la inclusión y nuevas oportunidades para construir un mejor futuro Ser una asociación reconocida por su compromiso con las víctimas y familias vulnerables, oportunidades para construir una vida digna y un futuro con esperanza",
-        "categoria": "Agrícola",
+        "categoria": "Otros",
         "productoEstrellaId": 45,
         "whatsapp": "573204808261"
     },
@@ -1095,7 +1097,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Asociación de mujeres  campesinas r",
         "logo": "/images/default.svg",
         "descripcion": "No No",
-        "categoria": "Otros",
+        "categoria": "Agrícola",
         "productoEstrellaId": 47,
         "whatsapp": "573114585581"
     },
@@ -1104,7 +1106,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Asoproape",
         "logo": "/images/default.svg",
         "descripcion": "Apoyamos a nuestros campesinos para disfrutar  lo mejor del campo a tu mesa",
-        "categoria": "Otros",
+        "categoria": "Agrícola",
         "productoEstrellaId": null,
         "whatsapp": "573223724782"
     },
@@ -1113,7 +1115,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Reforestando a Colombia",
         "logo": "/images/drive_1u2UDfRDBgDOsdWw5fDF7K2_qBxTHri3x.jpg",
         "descripcion": "Sembrando amor en nuestra tierra",
-        "categoria": "Otros",
+        "categoria": "Agrícola",
         "productoEstrellaId": 49,
         "whatsapp": "573104802613"
     },
@@ -1122,7 +1124,7 @@ export default function EcommerceArtesanal() {
         "nombre": "Rosa Fany parada",
         "logo": "/images/default.svg",
         "descripcion": "Fortaleza de las huertas campesinas Q aya comercio de productos campesinos",
-        "categoria": "Alimentos",
+        "categoria": "Agrícola",
         "productoEstrellaId": 51,
         "whatsapp": "573044395492"
     },
@@ -1140,17 +1142,55 @@ export default function EcommerceArtesanal() {
         "nombre": "GRANJA AGROECOLOGICA \"EL ROBLE\"",
         "logo": "/images/default.svg",
         "descripcion": "GRANJA AGROECOLOGICA \"EL ROBLE\"",
-        "categoria": "Otros",
+        "categoria": "Agrícola",
         "productoEstrellaId": 55,
         "whatsapp": "31820036383177364555"
     }
 ];
 
+  const getCompanyDescription = (empresa) => {
+    const text = (empresa.descripcion || '').replace(/\s+/g, ' ').trim();
+    const isIncomplete = /^(no|no no|no hay nop)$/i.test(text) || text.length < 12;
+    const categoryDetails = {
+      'Artesanía': 'Desarrollamos productos con identidad regional, cuidando cada detalle y ofreciendo atención cercana a nuestros compradores.',
+      'Agrícola': 'Trabajamos con productos locales de buena calidad, promoviendo prácticas responsables y el consumo directo desde la región.',
+      'Alimentos': 'Elaboramos propuestas naturales y saludables, valorando los ingredientes de Boyacá y la tradición de nuestros productores.',
+      'Otros': 'Impulsamos iniciativas locales con compromiso, calidad y cercanía, fortaleciendo la economía y las comunidades de Duitama.'
+    };
+
+    if (isIncomplete) {
+      return `${empresa.nombre} es una iniciativa regional de ${empresa.categoria?.toLowerCase() || 'otros'} que apuesta por la calidad, el trabajo local y la atención cercana. ${categoryDetails[empresa.categoria] || categoryDetails.Otros}`;
+    }
+
+    if (text.length < 55) {
+      return `${text.replace(/[.!?]+$/, '')}. ${categoryDetails[empresa.categoria] || categoryDetails.Otros}`;
+    }
+
+    if (text.length <= 190) {
+      return text;
+    }
+
+    const shortened = text.slice(0, 190);
+    const lastPeriod = shortened.lastIndexOf('.');
+    const cutAt = lastPeriod > 130 ? lastPeriod + 1 : shortened.lastIndexOf(' ');
+    return `${shortened.slice(0, cutAt).trim()}…`;
+  };
+
+  const getCategoryClasses = (category) => {
+    const categoryClasses = {
+      'Agrícola': 'bg-green-200 text-green-900 border-green-300',
+      'Artesanía': 'bg-[#D9C0A7] text-[#6B4028] border-[#B99070]',
+      'Alimentos': 'bg-yellow-200 text-yellow-900 border-yellow-300',
+      'Otros': 'bg-red-200 text-red-900 border-red-300'
+    };
+    return categoryClasses[category] || 'bg-gray-200 text-gray-800 border-gray-300';
+  };
+
   const categorias = [
     {
         "id": "otros",
         "nombre": "Otros",
-        "imagen": "/images/picsum_cat_otros.jpg"
+        "imagen": "/images/plaza-productos-locales.jpg"
     },
     {
         "id": "alimentos",
@@ -1165,12 +1205,7 @@ export default function EcommerceArtesanal() {
     {
         "id": "agrícola",
         "nombre": "Agrícola",
-        "imagen": "/images/picsum_cat_agr_cola.jpg"
-    },
-    {
-        "id": "ofertas",
-        "nombre": "Ofertas",
-        "imagen": "/images/picsum_cat_ofertas.jpg"
+        "imagen": "/images/mercado-vendedor-alimentos.jpg"
     }
 ];
 
@@ -1179,6 +1214,48 @@ export default function EcommerceArtesanal() {
     const cumpleBusqueda = p.nombre.toLowerCase().includes(searchTerm.toLowerCase());
     return cumpleCategoria && cumpleBusqueda;
   });
+
+  const scrollTrack = (trackRef, direction) => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const animatedTrack = track.firstElementChild;
+    if (animatedTrack) {
+      const animationClass = animatedTrack.classList.contains('animate-marquee-left')
+        ? 'animate-marquee-left'
+        : 'animate-marquee-right';
+
+      animatedTrack.classList.remove(animationClass);
+      window.clearTimeout(animatedTrack._resumeAnimationTimeout);
+      animatedTrack._resumeAnimationTimeout = window.setTimeout(() => {
+        animatedTrack.classList.add(animationClass);
+      }, 1200);
+    }
+
+    const firstCard = animatedTrack?.firstElementChild;
+    const cardWidth = firstCard?.getBoundingClientRect().width || track.clientWidth * 0.8;
+    const gap = 24;
+    const cardCount = animatedTrack?.children.length
+      ? Math.ceil(animatedTrack.children.length / 2)
+      : 1;
+    const loopEnd = Math.max(0, (cardWidth + gap) * (cardCount - 1));
+    const step = cardWidth + gap;
+
+    if (direction > 0 && (track.scrollLeft >= loopEnd - 10 || track.scrollLeft + step >= loopEnd)) {
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (direction < 0 && track.scrollLeft <= 10) {
+      track.scrollTo({ left: loopEnd, behavior: 'smooth' });
+      return;
+    }
+
+    track.scrollTo({
+      left: track.scrollLeft + direction * step,
+      behavior: 'smooth'
+    });
+  };
 
   const toggleFavorite = (id) => {
     setFavorites(prev => 
@@ -1213,6 +1290,14 @@ export default function EcommerceArtesanal() {
 
   const cartTotalItems = cartItems.reduce((acc, item) => acc + item.cantidad, 0);
 
+  const goToHome = () => {
+    setCurrentView('inicio');
+    setSelectedCategory('todos');
+    setSearchTerm('');
+    setIsMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const agruparCarritoPorEmpresa = () => {
     const grupos = {};
     cartItems.forEach(item => {
@@ -1243,31 +1328,26 @@ export default function EcommerceArtesanal() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f7] font-sans text-gray-900">
-      {/* Top Announcement Bar */}
-      <div className="bg-black text-white text-xs py-2 px-4 hidden md:block">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-2"><Truck size={14} /> Envío gratis en pedidos de $50.000+</span>
-            <span className="flex items-center gap-2"><RefreshCcw size={14} /> Devoluciones a 30 días</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-2"><ShieldCheck size={14} /> Pago Seguro</span>
-            <span className="flex items-center gap-2"><Headphones size={14} /> Soporte 24/7</span>
-          </div>
-        </div>
-      </div>
-
+    <div className="brand-theme min-h-screen bg-[#F1F7ED] font-sans text-[#0F2F2A]">
       {/* Main Navbar */}
-      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
+      <header className="sticky top-0 z-40 bg-[#F1F7ED]/95 backdrop-blur-md border-b border-[#2F6F4E]/20">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           
           {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedCategory('todos')}>
-            <div className="bg-black p-1.5 rounded-lg shadow-sm">
-              <ShoppingBag size={24} className="text-white" />
+        <div
+          role="link"
+          tabIndex={0}
+          aria-label="Ir al inicio"
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={goToHome}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') goToHome();
+          }}
+        >
+            <div className="bg-[#D9A441] p-1.5 rounded-lg shadow-sm ring-2 ring-[#0F2F2A]/10">
+              <ShoppingBag size={24} className="text-[#0F2F2A]" />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Artesanos<span className="font-light text-gray-500">Duitama</span></h1>
+            <h1 className="text-2xl font-bold text-[#0F2F2A] tracking-tight">Mercado <span className="font-light text-[#2F6F4E]">Campesino</span></h1>
           </div>
 
           {/* Nav Links */}
@@ -1275,8 +1355,7 @@ export default function EcommerceArtesanal() {
             <button onClick={() => setCurrentView('inicio')} className={`${currentView === 'inicio' ? 'text-black border-b-2 border-black' : 'hover:text-black'} pb-1 transition-colors`}>Inicio</button>
             <button onClick={() => setCurrentView('catalogo')} className={`${currentView === 'catalogo' ? 'text-black border-b-2 border-black' : 'hover:text-black'} pb-1 transition-colors`}>Catálogo</button>
             <button onClick={() => setCurrentView('empresas')} className={`${currentView === 'empresas' ? 'text-black border-b-2 border-black' : 'hover:text-black'} pb-1 transition-colors`}>Empresas</button>
-            <a href="#" className="hover:text-black transition-colors">Ofertas</a>
-            <a href="#" className="hover:text-black transition-colors">Nosotros</a>
+            <button onClick={() => setCurrentView('nosotros')} className={`${currentView === 'nosotros' ? 'text-[#2F6F4E] border-b-2 border-[#D9A441]' : 'hover:text-[#2F6F4E]'} pb-1 transition-colors`}>Nosotros</button>
           </nav>
 
           {/* Icons */}
@@ -1296,8 +1375,6 @@ export default function EcommerceArtesanal() {
             ) : (
                <Search size={20} className="cursor-pointer hover:text-black transition-colors hidden sm:block" onClick={() => setIsSearchActive(true)} />
             )}
-            <User size={20} className="cursor-pointer hover:text-black transition-colors hidden sm:block" />
-            <Heart size={20} className="cursor-pointer hover:text-black transition-colors hidden sm:block" />
             <div className="relative cursor-pointer hover:text-black transition-colors" onClick={() => setIsCartOpen(true)}>
               <ShoppingCart size={20} />
               {cartTotalItems > 0 && (
@@ -1323,12 +1400,9 @@ export default function EcommerceArtesanal() {
               <button onClick={() => { setCurrentView('inicio'); setIsMobileMenuOpen(false); }} className={`text-left ${currentView === 'inicio' ? 'text-[#1e5631]' : ''}`}>Inicio</button>
               <button onClick={() => { setCurrentView('catalogo'); setIsMobileMenuOpen(false); }} className={`text-left ${currentView === 'catalogo' ? 'text-[#1e5631]' : ''}`}>Catálogo</button>
               <button onClick={() => { setCurrentView('empresas'); setIsMobileMenuOpen(false); }} className={`text-left ${currentView === 'empresas' ? 'text-[#1e5631]' : ''}`}>Empresas</button>
-              <a href="#" className="hover:text-[#1e5631]">Ofertas</a>
-              <a href="#" className="hover:text-[#1e5631]">Nosotros</a>
+              <button onClick={() => { setCurrentView('nosotros'); setIsMobileMenuOpen(false); }} className={`text-left ${currentView === 'nosotros' ? 'text-[#1e5631]' : ''}`}>Nosotros</button>
               <div className="flex items-center gap-6 pt-4 border-t border-gray-100 sm:hidden">
                 <Search size={20} className="cursor-pointer hover:text-[#1e5631]" />
-                <User size={20} className="cursor-pointer hover:text-[#1e5631]" />
-                <Heart size={20} className="cursor-pointer hover:text-[#1e5631]" />
               </div>
             </nav>
           </div>
@@ -1343,6 +1417,7 @@ export default function EcommerceArtesanal() {
             <ChevronRight size={14} />
             {currentView === 'catalogo' && <span className="text-gray-900 font-medium">Catálogo de Productos</span>}
             {currentView === 'empresas' && <span className="text-gray-900 font-medium">Empresas Participantes</span>}
+            {currentView === 'nosotros' && <span className="text-gray-900 font-medium">Sobre Campesena</span>}
             {currentView === 'perfilEmpresa' && selectedCompany && (
               <>
                 <button onClick={() => setCurrentView('empresas')} className="hover:text-black transition-colors">Empresas</button>
@@ -1359,10 +1434,10 @@ export default function EcommerceArtesanal() {
         <>
           {/* Hero Section */}
           <section className="bg-transparent relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 py-16 md:py-32 grid md:grid-cols-2 gap-12 items-center">
+            <div className="max-w-7xl mx-auto px-4 py-10 md:py-20 grid md:grid-cols-2 gap-12 items-center">
               <div className="z-10">
-                <div className="inline-block bg-black text-white text-xs font-bold px-3 py-1 rounded-full mb-6 uppercase tracking-wider shadow-sm">
-                  Novedades 2024
+                <div className="inline-block bg-[#D9A441] text-[#0F2F2A] text-xs font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider shadow-sm">
+                  Bienvenido al mercado campesino digital
                 </div>
                 <h2 className="text-5xl md:text-6xl lg:text-8xl font-black text-gray-900 leading-tight mb-6 tracking-tight">
                   Vive Mejor.<br />
@@ -1372,10 +1447,10 @@ export default function EcommerceArtesanal() {
                   Descubre productos artesanales premium, seleccionados cuidadosamente para tu estilo de vida. Apoya lo nuestro de forma inteligente.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button onClick={() => setCurrentView('catalogo')} className="bg-black text-white px-8 py-4 rounded-full font-medium hover:bg-gray-800 transition-colors shadow-lg flex items-center justify-center gap-2">
+                  <button onClick={() => setCurrentView('catalogo')} className="bg-[#2F6F4E] text-[#F1F7ED] px-8 py-4 rounded-full font-bold hover:bg-[#88B04B] hover:text-[#0F2F2A] transition-all shadow-lg flex items-center justify-center gap-2">
                     Comprar Ahora <span className="text-xl">→</span>
                   </button>
-                  <button onClick={() => setCurrentView('empresas')} className="bg-white text-black px-8 py-4 rounded-full font-medium hover:bg-gray-50 border border-gray-200 transition-colors shadow-sm text-center">
+                  <button onClick={() => setCurrentView('empresas')} className="bg-[#F1F7ED] text-[#0F2F2A] px-8 py-4 rounded-full font-bold hover:bg-[#D9A441] border border-[#2F6F4E]/30 transition-all shadow-sm text-center">
                     Ver Empresas
                   </button>
                 </div>
@@ -1384,15 +1459,10 @@ export default function EcommerceArtesanal() {
               <div className="relative h-[400px] md:h-[500px]">
                 <div className="absolute inset-0 flex justify-center items-center">
                    <img 
-                     src="https://picsum.photos/seed/hero/800/600" 
-                     alt="Productos Artesanales" 
+                     src="/images/mercado-mercaderia-artesanal.jpg" 
+                     alt="Plaza campesina con productores artesanales" 
                      className="w-full h-full object-cover rounded-2xl shadow-xl"
                    />
-                   <div className="absolute top-4 right-4 bg-black text-white w-24 h-24 rounded-full flex flex-col items-center justify-center shadow-2xl transform rotate-12">
-                     <span className="text-xs font-medium uppercase">Hasta</span>
-                     <span className="text-3xl font-black leading-none">50%</span>
-                     <span className="text-sm font-bold">OFF</span>
-                   </div>
                    <div className="absolute -bottom-6 right-4 md:right-10 bg-white p-3 rounded-xl shadow-lg flex items-center gap-2 sm:gap-3 scale-90 sm:scale-100 origin-bottom-right">
                      <div className="flex -space-x-2">
                        <img src="https://picsum.photos/seed/user1/100/100" className="w-8 h-8 rounded-full border-2 border-white" alt="User" />
@@ -1411,25 +1481,30 @@ export default function EcommerceArtesanal() {
             </div>
           </section>
 
-          {/* Producto Estrella Section */}
-          <section className="max-w-7xl mx-auto px-4 py-16">
-            <div className="bg-black rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
-              <div className="md:w-1/2 p-10 md:p-16 flex flex-col justify-center text-white">
-                <div className="flex items-center gap-2 mb-6">
-                  <Star className="text-yellow-400 fill-yellow-400" size={24} />
-                  <span className="text-yellow-400 font-bold tracking-widest uppercase text-xs">Producto Estrella del Mes</span>
+          {/* Nuestra misión */}
+          <section className="max-w-7xl mx-auto px-4 py-10">
+            <div className="grid md:grid-cols-[1.55fr_1fr] gap-5 items-stretch">
+              <div className="bg-[#0F2F2A] rounded-2xl p-6 md:p-8 text-[#F1F7ED] shadow-lg border border-[#88B04B]/30 flex flex-col justify-center min-h-[280px]">
+                <div className="flex items-center gap-2 mb-4">
+                  <Store className="text-[#D9A441]" size={20} />
+                  <span className="text-[#D9A441] font-bold tracking-widest uppercase text-xs">Nuestra misión</span>
                 </div>
-                <h3 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Miel Artesanal Pura</h3>
-                <p className="text-gray-400 text-lg md:text-xl mb-10 font-light leading-relaxed">Nuestra miel más vendida, 100% pura y sin procesar, recolectada por Apícola Boyacá. Un endulzante natural lleno de beneficios para tu salud.</p>
+                <h3 className="text-2xl md:text-3xl font-black mb-4 tracking-tight">Impulsamos lo hecho en nuestra región</h3>
+                <p className="text-gray-300 text-base mb-6 max-w-2xl leading-relaxed">Conectamos a productores campesinos y artesanos con más compradores para hacer crecer sus negocios y llevar la calidad de nuestra región a cada hogar.</p>
                 <button 
-                  onClick={() => { setSelectedProduct(productos.find(p => p.id === 2)); }}
-                  className="bg-white text-black font-bold py-4 px-10 rounded-full self-start hover:bg-gray-100 transition-transform hover:-translate-y-1 shadow-lg"
+                  onClick={() => setCurrentView('catalogo')}
+                  className="bg-[#D9A441] text-[#0F2F2A] font-bold py-3 px-6 rounded-full self-start hover:bg-[#88B04B] transition-transform hover:-translate-y-1 shadow-lg text-sm"
                 >
-                  Ver Producto
+                  Conocer los productos
                 </button>
               </div>
-              <div className="md:w-1/2 h-64 md:h-auto">
-                <img src="https://picsum.photos/seed/miel2/800/800" alt="Miel Pura" className="w-full h-full object-cover" />
+
+              <div className="relative min-h-[280px] rounded-2xl overflow-hidden shadow-lg group">
+                <img src="/images/mercado-vendedor-alimentos.jpg" alt="Vendedor local de alimentos en el mercado" className="w-full h-full absolute inset-0 object-cover object-center transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/80 to-transparent">
+                  <p className="text-white font-bold text-lg">Hecho por manos locales</p>
+                  <p className="text-white/80 text-sm">Tradición, trabajo y comunidad</p>
+                </div>
               </div>
             </div>
           </section>
@@ -1441,8 +1516,29 @@ export default function EcommerceArtesanal() {
               <h3 className="text-2xl font-bold text-gray-900">Comprar por Categoría</h3>
               <div className="h-[1px] flex-1 bg-gray-200"></div>
             </div>
-            <div className="overflow-hidden w-full relative pause-on-hover px-4">
-              <div className="animate-marquee-left flex gap-4 md:gap-6 py-2">
+            <div
+              className="group/track overflow-hidden w-full relative px-4"
+            >
+              <button
+                type="button"
+                aria-label="Categorías anteriores"
+                onClick={() => scrollTrack(categoryTrackRef, -1)}
+                className="absolute left-2 top-1/2 z-20 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center md:opacity-0 md:group-hover/track:opacity-100 transition-opacity"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                type="button"
+                aria-label="Categorías siguientes"
+                onClick={() => scrollTrack(categoryTrackRef, 1)}
+                className="absolute right-2 top-1/2 z-20 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center md:opacity-0 md:group-hover/track:opacity-100 transition-opacity"
+              >
+                <ChevronRight size={20} />
+              </button>
+              <div ref={categoryTrackRef} className="mobile-track pause-on-hover overflow-x-auto">
+                <div
+                  className="animate-marquee-left flex gap-4 md:gap-6 py-2"
+                >
                 {[...categorias, ...categorias].map((cat, index) => (
                   <div 
                     key={`${cat.id}-${index}`} 
@@ -1450,17 +1546,12 @@ export default function EcommerceArtesanal() {
                     className="min-w-[160px] md:min-w-[200px] bg-white rounded-3xl p-5 flex flex-col items-center justify-center cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-none group shadow-sm flex-shrink-0"
                   >
                     <div className="w-24 h-24 mb-4 rounded-full overflow-hidden bg-gray-50 flex items-center justify-center shadow-inner">
-                      {cat.id === 'ofertas' ? (
-                         <div className="w-full h-full bg-black flex items-center justify-center text-white">
-                           <span className="text-3xl font-black">%</span>
-                         </div>
-                      ) : (
-                        <img src={cat.imagen} alt={cat.nombre} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
-                      )}
+                      <img src={cat.imagen} alt={cat.nombre} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                     </div>
                     <p className="font-semibold text-gray-900 text-sm group-hover:text-black transition-colors">{cat.nombre}</p>
                   </div>
                 ))}
+                </div>
               </div>
             </div>
           </section>
@@ -1476,8 +1567,29 @@ export default function EcommerceArtesanal() {
                 Ver catálogo <span className="text-lg">→</span>
               </button>
             </div>
-            <div className="overflow-hidden w-full relative pause-on-hover px-4">
-              <div className="animate-marquee-right flex gap-6 py-4">
+            <div
+              className="group/track overflow-hidden w-full relative px-4"
+            >
+              <button
+                type="button"
+                aria-label="Productos anteriores"
+                onClick={() => scrollTrack(productsTrackRef, -1)}
+                className="absolute left-2 top-1/2 z-20 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center md:opacity-0 md:group-hover/track:opacity-100 transition-opacity"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                type="button"
+                aria-label="Productos siguientes"
+                onClick={() => scrollTrack(productsTrackRef, 1)}
+                className="absolute right-2 top-1/2 z-20 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center md:opacity-0 md:group-hover/track:opacity-100 transition-opacity"
+              >
+                <ChevronRight size={20} />
+              </button>
+              <div ref={productsTrackRef} className="mobile-track pause-on-hover overflow-x-auto">
+                <div
+                  className="animate-marquee-right flex gap-6 py-4"
+                >
                 {[...productos.slice(0, 4), ...productos.slice(0, 4)].map((producto, index) => (
                   <div key={`${producto.id}-${index}`} className="min-w-[280px] w-[280px] flex-shrink-0 bg-white rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative flex flex-col h-full shadow-sm">
                     <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
@@ -1506,25 +1618,26 @@ export default function EcommerceArtesanal() {
                     </div>
                   </div>
                 ))}
+                </div>
               </div>
             </div>
           </section>
 
           {/* Features Banner */}
           <section className="max-w-7xl mx-auto px-4 mb-20">
-            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
+            <div className="bg-[#2F6F4E] rounded-3xl p-8 md:p-10 shadow-lg border border-[#88B04B]/40">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 {[
-                  { icon: <Diamond size={32} className="text-black"/>, title: 'Calidad Premium', desc: 'Productos seleccionados' },
-                  { icon: <Truck size={32} className="text-black"/>, title: 'Envíos Nacionales', desc: 'A todo el país' },
-                  { icon: <Store size={32} className="text-black"/>, title: 'Apoyo Local', desc: 'Directo del productor' },
-                  { icon: <ShieldCheck size={32} className="text-black"/>, title: 'Compra Segura', desc: 'Trato directo' },
+                  { icon: <Diamond size={32} className="text-[#D9A441]"/>, title: 'Calidad Regional', desc: 'Hecho por manos locales' },
+                  { icon: <Truck size={32} className="text-[#D9A441]"/>, title: 'Conecta el Campo', desc: 'Del productor al consumidor' },
+                  { icon: <Store size={32} className="text-[#D9A441]"/>, title: 'Economía Local', desc: 'Apoyo directo a emprendedores' },
+                  { icon: <ShieldCheck size={32} className="text-[#D9A441]"/>, title: 'Compra Cercana', desc: 'Ventas por trato directo' },
                 ].map((feat, i) => (
                   <div key={i} className="flex items-center gap-4">
-                    {feat.icon}
+                    <div className="text-[#D9A441] flex-shrink-0">{feat.icon}</div>
                     <div>
-                      <h4 className="font-bold text-gray-900">{feat.title}</h4>
-                      <p className="text-sm text-gray-500">{feat.desc}</p>
+                      <h4 className="font-bold text-[#F1F7ED]">{feat.title}</h4>
+                      <p className="text-sm text-[#D8E6D0]">{feat.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -1613,6 +1726,93 @@ export default function EcommerceArtesanal() {
         </section>
       )}
 
+      {/* VISTA: NOSOTROS */}
+      {currentView === 'nosotros' && (
+        <main className="max-w-7xl mx-auto px-4 py-10 md:py-16">
+          <section className="relative overflow-hidden rounded-3xl bg-[#0F2F2A] text-[#F1F7ED] min-h-[360px] mb-8">
+            <img
+              src="/images/mercado-mercaderia-artesanal.jpg"
+              alt="Campesinos y artesanos regionales"
+              className="absolute inset-0 w-full h-full object-cover opacity-35"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0F2F2A] via-[#0F2F2A]/85 to-transparent"></div>
+            <div className="relative z-10 max-w-2xl p-8 md:p-14">
+              <span className="inline-block text-[#D9A441] font-bold text-xs uppercase tracking-widest mb-4">E-Commerce Nodo Duitama</span>
+              <h1 className="text-4xl md:text-6xl font-black leading-tight mb-5">Lo regional llega a cada hogar</h1>
+              <p className="text-[#E5EDDF] text-lg leading-relaxed mb-7">
+                Campesena conecta a los productores, asociaciones, artesanos y emprendedores de Boyacá con personas que quieren consumir productos auténticos, frescos y hechos con propósito.
+              </p>
+              <button
+                onClick={() => setCurrentView('catalogo')}
+                className="bg-[#D9A441] text-[#0F2F2A] px-6 py-3 rounded-full font-bold hover:bg-[#88B04B] transition-colors"
+              >
+                Explorar la tienda
+              </button>
+            </div>
+          </section>
+
+          <section className="grid md:grid-cols-3 gap-5 mb-8">
+            <div className="bg-[#0F2F2A] text-[#F1F7ED] rounded-2xl p-7 border border-[#88B04B]/30">
+              <Store className="text-[#D9A441] mb-4" size={28} />
+              <h2 className="text-xl font-bold mb-3">Nuestra misión</h2>
+              <p className="text-[#D8E6D0] leading-relaxed">
+                Visibilizar, fortalecer y comercializar el trabajo de campesinos, familias y emprendedores regionales, facilitando una relación cercana entre productor y consumidor.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl p-7 border border-[#2F6F4E]/20 shadow-sm">
+              <Diamond className="text-[#2F6F4E] mb-4" size={28} />
+              <h2 className="text-xl font-bold text-[#0F2F2A] mb-3">Nuestra visión</h2>
+              <p className="text-gray-600 leading-relaxed">
+                Ser una plataforma reconocida en Duitama y Boyacá que impulse el crecimiento sostenible de las empresas locales y lleve sus productos a más hogares.
+              </p>
+            </div>
+            <div className="bg-[#D9A441] rounded-2xl p-7 border border-[#0F2F2A]/10">
+              <ShieldCheck className="text-[#0F2F2A] mb-4" size={28} />
+              <h2 className="text-xl font-bold text-[#0F2F2A] mb-3">Lo que representamos</h2>
+              <p className="text-[#0F2F2A]/80 leading-relaxed">
+                Comercio justo, apoyo comunitario, sostenibilidad, calidad auténtica y rescate de las tradiciones agrícolas y artesanales de nuestra tierra.
+              </p>
+            </div>
+          </section>
+
+          <section className="grid lg:grid-cols-[1.2fr_1fr] gap-6 mb-8">
+            <div className="bg-white rounded-2xl p-8 border border-[#2F6F4E]/20 shadow-sm">
+              <span className="text-[#2F6F4E] font-bold text-xs uppercase tracking-widest">Qué ofrecemos</span>
+              <h2 className="text-3xl font-black text-[#0F2F2A] mt-2 mb-5">Una plaza digital para lo hecho en nuestra región</h2>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Campesena reúne en un solo lugar productos agrícolas, alimentos frescos, conservas, miel, cosmética natural, plantas, artesanías, cuero y otras propuestas elaboradas por productores locales.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {["Campo y alimentación","Artesanía regional","Productos naturales","Emprendimientos locales","Asociaciones campesinas","Compra directa y cercana"].map((item) => (
+                  <div key={item} className="flex items-center gap-3 rounded-xl bg-[#F1F7ED] px-4 py-3 text-sm font-bold text-[#0F2F2A] border border-[#2F6F4E]/10">
+                    <CheckCircle2 size={18} className="text-[#88B04B] flex-shrink-0" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-2xl min-h-[360px] shadow-sm">
+              <img src="/images/plaza-productos-locales.jpg" alt="Productos locales de Campesena" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0F2F2A] to-transparent p-7 pt-20">
+                <p className="text-[#D9A441] text-xs font-bold uppercase tracking-widest mb-2">De la región para la región</p>
+                <p className="text-[#F1F7ED] text-xl font-bold">Cada compra fortalece una familia, una asociación y una comunidad.</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-[#2F6F4E] rounded-2xl p-7 md:p-9 text-[#F1F7ED] flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+            <div>
+              <p className="text-[#D9A441] text-xs font-bold uppercase tracking-widest mb-2">Conoce el talento local</p>
+              <h2 className="text-2xl md:text-3xl font-black">Encuentra alimentos, artesanías y productos hechos en Boyacá</h2>
+            </div>
+            <button onClick={() => setCurrentView('empresas')} className="bg-[#F1F7ED] text-[#0F2F2A] px-6 py-3 rounded-full font-bold whitespace-nowrap hover:bg-[#D9A441] transition-colors">
+              Ver empresas
+            </button>
+          </section>
+        </main>
+      )}
+
       {/* VISTA: EMPRESAS */}
       {currentView === 'empresas' && (
         <section className="max-w-7xl mx-auto px-4 py-8">
@@ -1625,16 +1825,23 @@ export default function EcommerceArtesanal() {
             {empresas.map((empresa) => (
               <div key={empresa.id} className="bg-white rounded-3xl border border-gray-100 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col shadow-sm">
                 <div className="h-32 bg-black relative">
+                  <div className="absolute inset-0 flex items-center justify-center px-12 pr-28">
+                    <img
+                      src="/images/logo-campesena.png"
+                      alt="Campesena"
+                      className="h-20 w-auto max-w-full object-contain"
+                    />
+                  </div>
                   <div className="absolute -bottom-10 left-6 w-20 h-20 bg-white rounded-full p-1 shadow-md">
                      <img src={empresa.logo} alt={empresa.nombre} className="w-full h-full object-cover rounded-full" />
                   </div>
-                  <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-white text-xs font-medium border border-white/30">
+                  <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold shadow-sm border ${getCategoryClasses(empresa.categoria)}`}>
                     {empresa.categoria}
                   </div>
                 </div>
                 <div className="pt-14 p-6 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{empresa.nombre}</h3>
-                  <p className="text-gray-600 text-sm mb-6 flex-1 font-light leading-relaxed">{empresa.descripcion}</p>
+                  <p className="text-gray-600 text-sm mb-6 flex-1 font-light leading-relaxed">{getCompanyDescription(empresa)}</p>
                   
                   <button 
                     onClick={() => { setSelectedCompany(empresa); setCurrentView('perfilEmpresa'); }}
@@ -1659,11 +1866,11 @@ export default function EcommerceArtesanal() {
             <img src={selectedCompany.logo} alt={selectedCompany.nombre} className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg border-4 border-white z-10" />
             
             <div className="flex-1 text-center md:text-left z-10">
-              <div className="inline-block bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
+              <div className={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider border ${getCategoryClasses(selectedCompany.categoria)}`}>
                 {selectedCompany.categoria}
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{selectedCompany.nombre}</h2>
-              <p className="text-gray-600 text-lg mb-6 max-w-2xl">{selectedCompany.descripcion}</p>
+              <p className="text-gray-600 text-lg mb-6 max-w-2xl">{getCompanyDescription(selectedCompany)}</p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <button 
@@ -1724,26 +1931,30 @@ export default function EcommerceArtesanal() {
       )}
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 pt-16 pb-8">
+      <footer className="bg-[#0F2F2A] text-[#F1F7ED] border-t border-[#D9A441]/30 pt-16 pb-8">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
             
             {/* Brand Info */}
             <div className="md:col-span-1">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="bg-black p-1.5 rounded-lg shadow-sm">
-                  <ShoppingBag size={20} className="text-white" />
+              <div
+                role="link"
+                tabIndex={0}
+                aria-label="Ir al inicio"
+                className="flex items-center gap-2 mb-4 cursor-pointer"
+                onClick={goToHome}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') goToHome();
+                }}
+              >
+                <div className="bg-[#D9A441] p-1.5 rounded-lg shadow-sm">
+                  <ShoppingBag size={20} className="text-[#0F2F2A]" />
                 </div>
-                <h2 className="text-xl font-bold text-gray-900">Artesanos<span className="font-light text-gray-500">Duitama</span></h2>
+                <h2 className="text-xl font-bold text-[#F1F7ED]">Mercado <span className="font-light text-[#88B04B]">Campesino</span></h2>
               </div>
               <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                Tu tienda local integral para productos de alta calidad a los mejores precios.
+                E-Commerce Nodo Duitama conecta productores, asociaciones, artesanos y emprendedores de la región con compradores interesados en consumir local.
               </p>
-              <div className="flex items-center gap-4 text-gray-600 font-medium">
-                <a href="#" className="hover:text-black transition-colors">Facebook</a>
-                <a href="#" className="hover:text-black transition-colors">Instagram</a>
-                <a href="#" className="hover:text-black transition-colors">Twitter</a>
-              </div>
             </div>
 
             {/* Links Columns */}
@@ -1753,7 +1964,6 @@ export default function EcommerceArtesanal() {
                 <li><a href="#" className="hover:text-black transition-colors">Todos los Productos</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">Nuevos</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">Más Vendidos</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Ofertas</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">Colecciones</a></li>
               </ul>
             </div>
@@ -1764,19 +1974,15 @@ export default function EcommerceArtesanal() {
                 <li><a href="#" className="hover:text-black transition-colors">Política de Envíos</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">Devoluciones y Cambios</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">FAQ</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Rastrea tu Orden</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">Contáctanos</a></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold text-gray-900 mb-4">Nosotros</h4>
-              <ul className="space-y-3 text-sm text-gray-500">
-                <li><a href="#" className="hover:text-black transition-colors">Nuestra Historia</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Sostenibilidad</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Carreras</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Blog</a></li>
-              </ul>
+              <h4 className="font-bold text-gray-900 mb-4">Sobre Campesena</h4>
+              <p className="text-sm text-gray-500 mb-3 leading-relaxed">
+                Impulsamos los productos agrícolas, alimentarios y artesanales de Boyacá para fortalecer la economía local y rescatar las tradiciones campesinas.
+              </p>
             </div>
 
             {/* Small subscribe & badges */}
@@ -1784,21 +1990,16 @@ export default function EcommerceArtesanal() {
               <h4 className="font-bold text-gray-900 mb-4">Mantente conectado</h4>
               <p className="text-sm text-gray-500 mb-4">Recibe actualizaciones sobre nuevos productos.</p>
               <div className="flex gap-2 mb-6">
-                <input type="email" placeholder="Ingresa tu email" className="border border-gray-200 rounded-lg px-3 py-2 w-full text-sm focus:outline-none focus:border-black focus:ring-1 focus:ring-black bg-gray-50" />
-                <button className="bg-black hover:bg-gray-800 transition-colors text-white px-4 py-2 rounded-lg text-sm font-medium">Suscribir</button>
-              </div>
-              
-              <div className="flex items-center gap-2 text-xs text-gray-600">
-                 <Truck size={16} className="text-black"/> 
-                 <div><span className="font-bold">Envío Gratis</span><br/>Pedidos +$50k</div>
+                <input type="email" placeholder="Ingresa tu email" className="min-w-0 border border-[#88B04B]/60 rounded-lg px-2 py-2 w-full text-xs text-[#0F2F2A] placeholder:text-[11px] placeholder:text-[#2F6F4E] placeholder:whitespace-nowrap focus:outline-none focus:border-[#D9A441] focus:ring-1 focus:ring-[#D9A441] bg-[#F1F7ED]" />
+                <button className="bg-[#D9A441] hover:bg-[#88B04B] transition-colors text-[#0F2F2A] px-2 py-2 rounded-lg text-xs font-bold flex-shrink-0">Suscribir</button>
               </div>
             </div>
 
           </div>
 
-          <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row items-center justify-between">
-            <p className="text-xs text-gray-400">
-              © 2024 Artesanos Duitama. Todos los derechos reservados.
+          <div className="border-t border-[#88B04B]/40 pt-6 flex flex-col md:flex-row items-center justify-between">
+            <p className="text-xs text-[#D8E6D0]">
+              © 2024 Mercado Campesino. Todos los derechos reservados.
             </p>
           </div>
         </div>

@@ -1,6 +1,53 @@
 @import "tailwindcss";
 
-/* Custom styles can go here */
+.brand-theme {
+  background-color: #E5EDDF !important;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(136, 176, 75, 0.18) 0 1px, transparent 2px),
+    linear-gradient(135deg, rgba(47, 111, 78, 0.10), transparent 48%);
+  background-size: 28px 28px, 100% 100%;
+}
+
+.brand-theme footer {
+  background: linear-gradient(135deg, #0F2F2A 0%, #2F6F4E 100%) !important;
+}
+
+.brand-theme footer h2,
+.brand-theme footer h4,
+.brand-theme footer a,
+.brand-theme footer p,
+.brand-theme footer span,
+.brand-theme footer li {
+  color: #F1F7ED !important;
+}
+
+.brand-theme footer .text-gray-500,
+.brand-theme footer .text-gray-600 {
+  color: #D8E6D0 !important;
+}
+
+.brand-theme footer a:hover {
+  color: #D9A441 !important;
+}
+
+.brand-theme .bg-white {
+  border-color: rgba(47, 111, 78, 0.12);
+}
+
+.brand-theme h3.text-gray-900,
+.brand-theme h2.text-gray-900,
+.brand-theme h4.text-gray-900 {
+  color: #0F2F2A;
+}
+
+.brand-theme .border-gray-200,
+.brand-theme .border-gray-100 {
+  border-color: rgba(47, 111, 78, 0.24);
+}
+
+.brand-theme .bg-gray-50 {
+  background-color: rgba(241, 247, 237, 0.78);
+}
 
 @keyframes marquee-left {
   0% { transform: translateX(0); }
@@ -13,17 +60,28 @@
 }
 
 .animate-marquee-left {
-  display: flex;
   width: max-content;
   animation: marquee-left 25s linear infinite;
 }
 
 .animate-marquee-right {
-  display: flex;
   width: max-content;
   animation: marquee-right 30s linear infinite;
 }
 
-.pause-on-hover:hover {
+.pause-on-hover:hover .animate-marquee-left,
+.pause-on-hover:hover .animate-marquee-right {
   animation-play-state: paused;
+}
+
+.mobile-track {
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+}
+
+.mobile-track::-webkit-scrollbar {
+  display: none;
 }
