@@ -1148,6 +1148,13 @@ export default function EcommerceArtesanal() {
     }
 ];
 
+  const orderedEmpresas = [...empresas].sort((a, b) => {
+    const categoryOrder = ['Agrícola', 'Alimentos', 'Artesanía', 'Otros'];
+    const categoryIndexA = categoryOrder.includes(a.categoria) ? categoryOrder.indexOf(a.categoria) : categoryOrder.length;
+    const categoryIndexB = categoryOrder.includes(b.categoria) ? categoryOrder.indexOf(b.categoria) : categoryOrder.length;
+    return categoryIndexA - categoryIndexB;
+  });
+
   const getCompanyDescription = (empresa) => {
     const text = (empresa.descripcion || '').replace(/\s+/g, ' ').trim();
     const isIncomplete = /^(no|no no|no hay nop)$/i.test(text) || text.length < 12;
@@ -1178,12 +1185,17 @@ export default function EcommerceArtesanal() {
 
   const getCategoryClasses = (category) => {
     const categoryClasses = {
-      'Agrícola': 'bg-green-200 text-green-900 border-green-300',
-      'Artesanía': 'bg-[#D9C0A7] text-[#6B4028] border-[#B99070]',
-      'Alimentos': 'bg-yellow-200 text-yellow-900 border-yellow-300',
-      'Otros': 'bg-red-200 text-red-900 border-red-300'
+      'Agrícola': 'bg-[#65A044] text-white border-[#A7D46A] shadow-lg shadow-green-900/20 ring-1 ring-white/40 font-bold tracking-wide',
+      'Artesanía': 'bg-[#B8784F] text-white border-[#EBC9AB] shadow-lg shadow-orange-900/20 ring-1 ring-white/40 font-bold tracking-wide',
+      'Alimentos': 'bg-[#E5A93B] text-white border-[#FFE39A] shadow-lg shadow-yellow-900/20 ring-1 ring-white/50 font-bold tracking-wide',
+      'Otros': 'bg-[#4F9F93] text-white border-[#B5E3DA] shadow-lg shadow-teal-900/20 ring-1 ring-white/40 font-bold tracking-wide'
     };
     return categoryClasses[category] || 'bg-gray-200 text-gray-800 border-gray-300';
+  };
+
+  const getCategoryHeaderClass = (category) => {
+    void category;
+    return 'bg-gradient-to-br from-[#9CA3A8] via-[#697076] to-[#4A5054]';
   };
 
   const categorias = [
@@ -1737,7 +1749,7 @@ export default function EcommerceArtesanal() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0F2F2A] via-[#0F2F2A]/85 to-transparent"></div>
             <div className="relative z-10 max-w-2xl p-8 md:p-14">
-              <span className="inline-block text-[#D9A441] font-bold text-xs uppercase tracking-widest mb-4">E-Commerce Nodo Duitama</span>
+              <span className="inline-block text-[#D9A441] font-bold text-xs uppercase tracking-widest mb-4">Mercado Campesino Digital</span>
               <h1 className="text-4xl md:text-6xl font-black leading-tight mb-5">Lo regional llega a cada hogar</h1>
               <p className="text-[#E5EDDF] text-lg leading-relaxed mb-7">
                 Campesena conecta a los productores, asociaciones, artesanos y emprendedores de Boyacá con personas que quieren consumir productos auténticos, frescos y hechos con propósito.
@@ -1818,13 +1830,13 @@ export default function EcommerceArtesanal() {
         <section className="max-w-7xl mx-auto px-4 py-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Empresas Participantes</h2>
-            <p className="text-gray-600">Conoce a los productores y artesanos locales que hacen posible el E-Commerce Nodo Duitama. Apoya el talento de nuestra región.</p>
+            <p className="text-gray-600">Conoce a los productores y artesanos locales que hacen posible Mercado Campesino Digital. Apoya el talento de nuestra región.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {empresas.map((empresa) => (
+            {orderedEmpresas.map((empresa) => (
               <div key={empresa.id} className="bg-white rounded-3xl border border-gray-100 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col shadow-sm">
-                <div className="h-32 bg-black relative">
+                <div className={`h-32 ${getCategoryHeaderClass(empresa.categoria)} relative`}>
                   <div className="absolute inset-0 flex items-center justify-center px-12 pr-28">
                     <img
                       src="/images/logo-campesena.png"
@@ -1953,7 +1965,7 @@ export default function EcommerceArtesanal() {
                 <h2 className="text-xl font-bold text-[#F1F7ED]">Mercado <span className="font-light text-[#88B04B]">Campesino</span></h2>
               </div>
               <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                E-Commerce Nodo Duitama conecta productores, asociaciones, artesanos y emprendedores de la región con compradores interesados en consumir local.
+                Mercado Campesino Digital conecta productores, asociaciones, artesanos y emprendedores de la región con compradores interesados en consumir local.
               </p>
             </div>
 
