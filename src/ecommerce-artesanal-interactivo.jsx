@@ -5,6 +5,10 @@ import {
   ChevronDown, Mail, Gift, Diamond, Menu, X, ChevronLeft, ChevronRight, Store, Trash2, Plus, Minus, CheckCircle2
 } from 'lucide-react';
 
+const CAMPESENA_LOGO = '/images/logo-campesena.png';
+const getImageSource = (image) => (!image || image === '/images/default.svg' ? CAMPESENA_LOGO : image);
+const isDefaultImage = (image) => !image || image === '/images/default.svg';
+
 const createAdditionalProduct = ({
   id,
   nombre,
@@ -22,7 +26,7 @@ const createAdditionalProduct = ({
   precio,
   precioMaximo,
   precioOriginal: null,
-  imagen: imagen || '/images/default.svg',
+  imagen: imagen || CAMPESENA_LOGO,
   descripcion: descripcion || nombre,
   vendedor,
   whatsapp,
@@ -47,6 +51,7 @@ export default function EcommerceArtesanal() {
   const [currentView, setCurrentView] = useState('inicio'); // inicio, catalogo, empresas, perfilEmpresa
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [supportTopic, setSupportTopic] = useState('envios');
 
   // Productos actualizados con 'precioOriginal' para mostrar el descuento (tachado)
   const productos = [
@@ -1737,6 +1742,13 @@ export default function EcommerceArtesanal() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const openSupport = (topic) => {
+    setSupportTopic(topic);
+    setCurrentView('atencionCliente');
+    setIsMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const agruparCarritoPorEmpresa = () => {
     const grupos = {};
     cartItems.forEach(item => {
@@ -1765,6 +1777,97 @@ export default function EcommerceArtesanal() {
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
   };
+
+  const supportPages = {
+    envios: {
+      title: 'Política de Envíos',
+      intro: 'La compra y entrega se coordinan directamente entre cada cliente y el negocio que ofrece el producto.',
+      notice: 'El precio publicado corresponde al producto: no incluye el costo del envío.',
+      sections: [
+        {
+          title: 'Acuerda el envío antes de pagar',
+          items: [
+            'Pregunta al vendedor si realiza envíos a tu dirección y qué transportadora utilizará.',
+            'Confirma el costo del envío, quién lo paga y el plazo estimado de entrega.',
+            'Deja acordadas por escrito la dirección y las condiciones de entrega antes de confirmar el pedido.'
+          ]
+        },
+        {
+          title: 'Quién coordina el transporte',
+          text: 'El comprador y el vendedor acuerdan directamente el transportador, el costo y las condiciones. Campesena facilita el contacto, pero no presta, cobra ni coordina el servicio de transporte.'
+        },
+        {
+          title: 'Demoras o daños durante el transporte',
+          text: 'Si ocurre una demora, pérdida o daño, informa de inmediato al vendedor y a la transportadora acordada, y conserva los comprobantes. Campesena no controla al transportador ni responde por hechos atribuibles a ese servicio, sin excluir las responsabilidades que establezca la ley.'
+        }
+      ]
+    },
+    devoluciones: {
+      title: 'Devoluciones y Cambios',
+      intro: 'Las solicitudes sobre un producto se tramitan directamente con el negocio que realizó la venta.',
+      notice: 'Las condiciones de cambio o devolución pueden variar según el producto y la situación. Los derechos que reconozca la ley siguen vigentes.',
+      sections: [
+        {
+          title: 'Cómo solicitar ayuda',
+          items: [
+            'Contacta al vendedor por WhatsApp desde su perfil y explica qué ocurrió.',
+            'Incluye el nombre del producto, la fecha del pedido y fotos si llegó dañado o no corresponde a lo acordado.',
+            'Antes de enviar un producto de vuelta, confirma con el vendedor la dirección, el plazo y quién asume el transporte de la devolución.'
+          ]
+        },
+        {
+          title: 'Acuerdo entre cliente y vendedor',
+          text: 'El vendedor debe informar cómo atenderá la solicitud. Campesena no recibe productos ni gestiona pagos, cambios o devoluciones; esto no limita las obligaciones o derechos que correspondan conforme a la normativa aplicable.'
+        }
+      ]
+    },
+    faq: {
+      title: 'Preguntas Frecuentes',
+      intro: 'Respuestas rápidas para comprar directamente a los negocios participantes.',
+      sections: [
+        {
+          title: '¿El precio incluye el envío?',
+          text: 'No. El precio publicado es solo del producto. El costo y la forma de entrega se acuerdan directamente con el vendedor.'
+        },
+        {
+          title: '¿Quién paga el transporte?',
+          text: 'El comprador y el vendedor deben acordarlo antes de confirmar el pedido, junto con la transportadora y el tiempo estimado.'
+        },
+        {
+          title: '¿Cómo hago un pedido?',
+          text: 'Usa el carrito o el botón de WhatsApp del negocio y confirma disponibilidad, precio final, envío y forma de pago directamente con el vendedor.'
+        },
+        {
+          title: '¿Campesena recibe el pago o envía el producto?',
+          text: 'No. El pedido, el pago y la entrega se coordinan entre el cliente y el negocio. Campesena ofrece el catálogo y facilita el contacto.'
+        },
+        {
+          title: '¿Qué hago si tengo un problema con mi compra?',
+          text: 'Contacta primero al vendedor y conserva los mensajes y comprobantes. Si el problema es con el transporte, informa también a la transportadora.'
+        }
+      ]
+    },
+    contacto: {
+      title: 'Contáctanos',
+      intro: 'Para consultas sobre productos, pedidos, pagos o envíos, comunícate directamente con el negocio correspondiente.',
+      notice: 'Campesena no publica aquí un teléfono o correo central de soporte. No compartas datos de pago hasta confirmar las condiciones directamente con el vendedor.',
+      sections: [
+        {
+          title: 'Contactar a un negocio',
+          items: [
+            'Abre la sección Empresas y busca el perfil del negocio.',
+            'Selecciona Ver Perfil y Productos y usa el botón de WhatsApp cuando esté disponible.',
+            'Confirma por ese medio el producto, el precio final, el costo del envío y la forma de pago.'
+          ]
+        },
+        {
+          title: 'Alcance de Campesena',
+          text: 'La plataforma presenta el catálogo y facilita el contacto. La venta y los acuerdos de pago y transporte se realizan directamente entre el cliente y el vendedor, sin perjuicio de las responsabilidades legales que correspondan.'
+        }
+      ]
+    }
+  };
+  const supportPage = supportPages[supportTopic];
 
   return (
     <div className="brand-theme min-h-screen bg-[#F1F7ED] font-sans text-[#0F2F2A]">
@@ -1857,6 +1960,7 @@ export default function EcommerceArtesanal() {
             {currentView === 'catalogo' && <span className="text-gray-900 font-medium">Catálogo de Productos</span>}
             {currentView === 'empresas' && <span className="text-gray-900 font-medium">Empresas Participantes</span>}
             {currentView === 'nosotros' && <span className="text-gray-900 font-medium">Sobre Campesena</span>}
+            {currentView === 'atencionCliente' && <span className="text-gray-900 font-medium">Atención al Cliente / {supportPage.title}</span>}
             {currentView === 'perfilEmpresa' && selectedCompany && (
               <>
                 <button onClick={() => setCurrentView('empresas')} className="hover:text-black transition-colors">Empresas</button>
@@ -2042,7 +2146,7 @@ export default function EcommerceArtesanal() {
                       <Heart size={16} className={favorites.includes(producto.id) ? "fill-red-500 text-red-500" : "text-gray-400"} />
                     </button>
                     <div className="bg-gray-50 rounded-xl overflow-hidden aspect-square mb-4 cursor-pointer" onClick={() => setSelectedProduct(producto)}>
-                      <img src={producto.imagen} alt={producto.nombre} className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" />
+                      <img src={getImageSource(producto.imagen)} alt={producto.nombre} className={`w-full h-full ${isDefaultImage(producto.imagen) ? 'object-contain p-6' : 'object-cover'} mix-blend-multiply group-hover:scale-105 transition-transform duration-500`} />
                     </div>
                     <div className="flex-1 flex flex-col pt-2">
                       <p className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wider">{producto.vendedor}</p>
@@ -2146,7 +2250,7 @@ export default function EcommerceArtesanal() {
                     <Heart size={16} className={favorites.includes(producto.id) ? "fill-red-500 text-red-500" : "text-gray-400"} />
                   </button>
                   <div className="bg-gray-50 rounded-xl overflow-hidden aspect-square mb-4 cursor-pointer" onClick={() => setSelectedProduct(producto)}>
-                    <img src={producto.imagen} alt={producto.nombre} className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" />
+                    <img src={getImageSource(producto.imagen)} alt={producto.nombre} className={`w-full h-full ${isDefaultImage(producto.imagen) ? 'object-contain p-6' : 'object-cover'} mix-blend-multiply group-hover:scale-105 transition-transform duration-500`} />
                   </div>
                   <div className="flex-1 flex flex-col pt-2">
                     <p className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wider">{producto.vendedor}</p>
@@ -2274,7 +2378,7 @@ export default function EcommerceArtesanal() {
                     />
                   </div>
                   <div className="absolute -bottom-10 left-6 w-20 h-20 bg-white rounded-full p-1 shadow-md">
-                     <img src={empresa.logo} alt={empresa.nombre} className="w-full h-full object-cover rounded-full" />
+                     <img src={getImageSource(empresa.logo)} alt={empresa.nombre} className={`w-full h-full rounded-full ${isDefaultImage(empresa.logo) ? 'object-contain p-2' : 'object-cover'}`} />
                   </div>
                   <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold shadow-sm border ${getCategoryClasses(empresa.categoria)}`}>
                     {empresa.categoria}
@@ -2304,7 +2408,7 @@ export default function EcommerceArtesanal() {
           <div className="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-sm mb-12 flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gray-50 rounded-full -translate-y-1/2 translate-x-1/3"></div>
             
-            <img src={selectedCompany.logo} alt={selectedCompany.nombre} className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg border-4 border-white z-10" />
+            <img src={getImageSource(selectedCompany.logo)} alt={selectedCompany.nombre} className={`w-32 h-32 md:w-40 md:h-40 rounded-full shadow-lg border-4 border-white z-10 ${isDefaultImage(selectedCompany.logo) ? 'object-contain p-2' : 'object-cover'}`} />
             
             <div className="flex-1 text-center md:text-left z-10">
               <div className={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider border ${getCategoryClasses(selectedCompany.categoria)}`}>
@@ -2352,7 +2456,7 @@ export default function EcommerceArtesanal() {
                     <Heart size={16} className={favorites.includes(producto.id) ? "fill-red-500 text-red-500" : "text-gray-400"} />
                   </button>
                   <div className="bg-gray-50 rounded-xl overflow-hidden aspect-square mb-4 cursor-pointer" onClick={() => setSelectedProduct(producto)}>
-                    <img src={producto.imagen} alt={producto.nombre} className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" />
+                    <img src={getImageSource(producto.imagen)} alt={producto.nombre} className={`w-full h-full ${isDefaultImage(producto.imagen) ? 'object-contain p-6' : 'object-cover'} mix-blend-multiply group-hover:scale-105 transition-transform duration-500`} />
                   </div>
                   <div className="flex-1 flex flex-col pt-2">
                     <h4 className="text-gray-900 font-bold mb-2 cursor-pointer hover:text-black line-clamp-2 mt-2" onClick={() => setSelectedProduct(producto)}>{producto.nombre}</h4>
@@ -2372,6 +2476,60 @@ export default function EcommerceArtesanal() {
             )}
           </div>
         </section>
+      )}
+
+      {currentView === 'atencionCliente' && (
+        <main className="max-w-7xl mx-auto px-4 py-8 md:py-12">
+          <div className="max-w-3xl mb-8">
+            <p className="text-sm font-bold uppercase tracking-widest text-[#2F6F4E] mb-2">Centro de ayuda</p>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0F2F2A] mb-3">{supportPage.title}</h2>
+            <p className="text-gray-600 leading-relaxed">{supportPage.intro}</p>
+          </div>
+
+          <div role="group" aria-label="Temas de atención al cliente" className="flex gap-2 overflow-x-auto pb-2 mb-6">
+            {Object.entries(supportPages).map(([topic, page]) => (
+              <button
+                key={topic}
+                type="button"
+                aria-pressed={supportTopic === topic}
+                onClick={() => setSupportTopic(topic)}
+                className={`px-4 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${supportTopic === topic ? 'bg-[#0F2F2A] text-white' : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-100'}`}
+              >
+                {page.title}
+              </button>
+            ))}
+          </div>
+
+          <div className="space-y-6">
+            <div className="rounded-2xl bg-[#FFF4D6] border border-[#E5A93B]/40 px-5 py-4 text-[#60430D] leading-relaxed">
+              {supportPage.notice}
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2">
+              {supportPage.sections.map((section) => (
+                <article key={section.title} className="bg-white rounded-2xl border border-[#2F6F4E]/15 shadow-sm p-6">
+                  <h3 className="text-lg font-bold text-[#0F2F2A] mb-3">{section.title}</h3>
+                  {section.text && <p className="text-gray-600 leading-relaxed">{section.text}</p>}
+                  {section.items && (
+                    <ul className="list-disc pl-5 space-y-2 text-gray-600 leading-relaxed">
+                      {section.items.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  )}
+                </article>
+              ))}
+            </div>
+
+            {supportTopic === 'contacto' && (
+              <button
+                type="button"
+                onClick={() => setCurrentView('empresas')}
+                className="bg-[#2F6F4E] text-white px-6 py-3 rounded-full font-bold hover:bg-[#0F2F2A] transition-colors"
+              >
+                Ver empresas y contactar por WhatsApp
+              </button>
+            )}
+          </div>
+        </main>
       )}
 
       {/* Footer */}
@@ -2415,10 +2573,10 @@ export default function EcommerceArtesanal() {
             <div>
               <h4 className="font-bold text-gray-900 mb-4">Atención al Cliente</h4>
               <ul className="space-y-3 text-sm text-gray-500">
-                <li><a href="#" className="hover:text-black transition-colors">Política de Envíos</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Devoluciones y Cambios</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">FAQ</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Contáctanos</a></li>
+                <li><button type="button" onClick={() => openSupport('envios')} className="text-left hover:text-black transition-colors">Política de Envíos</button></li>
+                <li><button type="button" onClick={() => openSupport('devoluciones')} className="text-left hover:text-black transition-colors">Devoluciones y Cambios</button></li>
+                <li><button type="button" onClick={() => openSupport('faq')} className="text-left hover:text-black transition-colors">FAQ</button></li>
+                <li><button type="button" onClick={() => openSupport('contacto')} className="text-left hover:text-black transition-colors">Contáctanos</button></li>
               </ul>
             </div>
 
@@ -2454,7 +2612,7 @@ export default function EcommerceArtesanal() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setSelectedProduct(null)}>
           <div className="bg-white rounded-2xl w-full max-w-3xl overflow-hidden flex flex-col md:flex-row" onClick={e => e.stopPropagation()}>
             <div className="w-full md:w-1/2 h-64 md:h-auto bg-gray-100">
-               <img src={selectedProduct.imagen} alt={selectedProduct.nombre} className="w-full h-full object-cover mix-blend-multiply" />
+               <img src={getImageSource(selectedProduct.imagen)} alt={selectedProduct.nombre} className={`w-full h-full ${isDefaultImage(selectedProduct.imagen) ? 'object-contain p-6' : 'object-cover'} mix-blend-multiply`} />
             </div>
             <div className="p-8 w-full md:w-1/2 flex flex-col justify-center">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">{selectedProduct.vendedor}</span>
@@ -2514,7 +2672,7 @@ export default function EcommerceArtesanal() {
                         <div className="space-y-4 mb-4">
                           {items.map(item => (
                             <div key={item.producto.id} className="flex gap-4">
-                              <img src={item.producto.imagen} alt={item.producto.nombre} className="w-16 h-16 object-cover rounded-xl bg-gray-50" />
+                              <img src={getImageSource(item.producto.imagen)} alt={item.producto.nombre} className={`w-16 h-16 rounded-xl bg-gray-50 ${isDefaultImage(item.producto.imagen) ? 'object-contain p-1' : 'object-cover'}`} />
                               <div className="flex-1">
                                 <h4 className="text-sm font-medium text-gray-900 line-clamp-2">{item.producto.nombre}</h4>
                                 <p className="text-black font-bold mt-1">{formatProductPrice(item.producto)}</p>
