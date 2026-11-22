@@ -5,6 +5,33 @@ import {
   ChevronDown, Mail, Gift, Diamond, Menu, X, ChevronLeft, ChevronRight, Store, Trash2, Plus, Minus, CheckCircle2
 } from 'lucide-react';
 
+const createAdditionalProduct = ({
+  id,
+  nombre,
+  categoria,
+  precio,
+  precioMaximo,
+  imagen,
+  descripcion,
+  vendedor,
+  whatsapp
+}) => ({
+  id,
+  nombre,
+  categoria,
+  precio,
+  precioMaximo,
+  precioOriginal: null,
+  imagen: imagen || '/images/default.svg',
+  descripcion: descripcion || nombre,
+  vendedor,
+  whatsapp,
+  rating: 4.5,
+  reviews: 10,
+  etiqueta: 'Nuevo',
+  colorEtiqueta: 'bg-green-600'
+});
+
 export default function EcommerceArtesanal() {
   const [selectedCategory, setSelectedCategory] = useState('todos');
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -520,12 +547,13 @@ export default function EcommerceArtesanal() {
     },
     {
         "id": 34,
-        "nombre": "Artesanías con esmeralda y acocula de pino patula",
+        "nombre": "Artesanías con esmeralda y artesanías en pino patula",
         "categoria": "artesanía",
         "precio": 10000,
+        "precioMaximo": 300000,
         "precioOriginal": null,
-        "imagen": "/images/drive_1d-BSvMtkZ5_oAuYX33Wntyeh3Awml1Aj.jpg",
-        "descripcion": "Artesanías con esmeralda y acocula de pino patula",
+        "imagen": "/images/chivor-artesanias-pino.png",
+        "descripcion": "Artesanías con esmeralda y artesanías en pino patula",
         "vendedor": "Asociación de Artesanos de Chivor",
         "whatsapp": "573107797969",
         "rating": 4.5,
@@ -535,12 +563,13 @@ export default function EcommerceArtesanal() {
     },
     {
         "id": 35,
-        "nombre": "15000",
-        "categoria": "otros",
-        "precio": 20000,
+        "nombre": "Artesanías en pino patula",
+        "categoria": "artesanía",
+        "precio": 15000,
+        "precioMaximo": 200000,
         "precioOriginal": null,
-        "imagen": "/images/default.svg",
-        "descripcion": "15000",
+        "imagen": "/images/chivor-canastos-pino.jpeg",
+        "descripcion": "Artesanías tejidas en pino patula",
         "vendedor": "Asociación de Artesanos de Chivor",
         "whatsapp": "573107797969",
         "rating": 4.5,
@@ -862,7 +891,247 @@ export default function EcommerceArtesanal() {
         "reviews": 10,
         "etiqueta": "Nuevo",
         "colorEtiqueta": "bg-green-600"
-    }
+    },
+    ...[
+      {
+        id: 57,
+        nombre: 'Frutas, verduras, hortalizas y hierbas aromáticas liofilizadas o deshidratadas',
+        categoria: 'alimentos',
+        precio: null,
+        vendedor: 'Asociación Campesina del Municipio de Duitama',
+        whatsapp: '573108159848',
+        descripcion: 'Disponibles en presentaciones de 100 g, 250 g y 500 g. Consultar precios.'
+      },
+      {
+        id: 58,
+        nombre: 'Queso pera',
+        categoria: 'alimentos',
+        precio: 15000,
+        vendedor: 'Del Altiplano productos lácteos',
+        whatsapp: '573103438912',
+        descripcion: 'Precio por libra.'
+      },
+      {
+        id: 59,
+        nombre: 'Queso doble crema',
+        categoria: 'alimentos',
+        precio: 14500,
+        vendedor: 'Del Altiplano productos lácteos',
+        whatsapp: '573103438912',
+        descripcion: 'Precio por libra.'
+      },
+      {
+        id: 60,
+        nombre: 'Mugs, diseño gráfico y stickers personalizados',
+        categoria: 'otros',
+        precio: null,
+        vendedor: 'crealab',
+        whatsapp: '573228847633'
+      },
+      {
+        id: 61,
+        nombre: 'Camisetas personalizadas',
+        categoria: 'otros',
+        precio: null,
+        vendedor: 'crealab',
+        whatsapp: '573228847633'
+      },
+      {
+        id: 62,
+        nombre: 'Productos de belleza y cuidado personal',
+        categoria: 'artesanía',
+        precio: null,
+        vendedor: 'Bella cosmetics',
+        whatsapp: '573116455334',
+        descripcion: 'Consultar productos y precios disponibles.'
+      },
+      {
+        id: 63,
+        nombre: 'Yuca',
+        categoria: 'agrícola',
+        precio: 1500,
+        vendedor: 'Asopezboy',
+        whatsapp: '573187333569',
+        descripcion: 'Precio aproximado por libra; confirmar disponibilidad.'
+      },
+      {
+        id: 64,
+        nombre: 'Plátano',
+        categoria: 'agrícola',
+        precio: 25000,
+        precioMaximo: 30000,
+        vendedor: 'Asopezboy',
+        whatsapp: '573187333569',
+        descripcion: 'Precio por gajo, según tamaño.'
+      },
+      {
+        id: 65,
+        nombre: 'Papa nativa',
+        categoria: 'agrícola',
+        precio: 5000,
+        vendedor: 'Granos y semillas',
+        whatsapp: '573143279480'
+      },
+      {
+        id: 66,
+        nombre: 'Hortalizas orgánicas',
+        categoria: 'agrícola',
+        precio: 3000,
+        vendedor: 'Granos y semillas',
+        whatsapp: '573143279480'
+      },
+      {
+        id: 67,
+        nombre: 'Pan de masa madre con trigo de semilla nativa y semillas',
+        categoria: 'alimentos',
+        precio: 13000,
+        vendedor: 'Masa madre -ORGANIC',
+        whatsapp: '573208339400'
+      },
+      {
+        id: 68,
+        nombre: 'Pan de masa madre con queso parmesano y orégano',
+        categoria: 'alimentos',
+        precio: 13000,
+        vendedor: 'Masa madre -ORGANIC',
+        whatsapp: '573208339400'
+      },
+      {
+        id: 69,
+        nombre: 'Réplicas de la Virgen de Pilar de Gualy',
+        categoria: 'artesanía',
+        precio: 50000,
+        vendedor: 'Mary Luz Lopez Ramirez',
+        whatsapp: '573133929718'
+      },
+      {
+        id: 70,
+        nombre: 'Pulseras con minerales de piedra de esmeralda',
+        categoria: 'artesanía',
+        precio: 50000,
+        precioMaximo: 200000,
+        vendedor: 'Mary Luz Lopez Ramirez',
+        whatsapp: '573133929718'
+      },
+      {
+        id: 71,
+        nombre: 'Artesanías en acícula de pino pátula',
+        categoria: 'artesanía',
+        precio: 10000,
+        precioMaximo: 300000,
+        vendedor: 'Merita Daza Artesanías',
+        whatsapp: '573106489746'
+      },
+      {
+        id: 72,
+        nombre: 'Bolso artesanal en acícula de pino pátula',
+        categoria: 'artesanía',
+        precio: 300000,
+        vendedor: 'Merita Daza Artesanías',
+        whatsapp: '573106489746'
+      },
+      {
+        id: 73,
+        nombre: 'Pollos semicriollos',
+        categoria: 'agrícola',
+        precio: 8000,
+        vendedor: 'Granja integral',
+        whatsapp: '573506335672',
+        descripcion: 'Precio por libra.'
+      },
+      {
+        id: 74,
+        nombre: 'Abonos orgánicos',
+        categoria: 'agrícola',
+        precio: 3000,
+        vendedor: 'Granja integral',
+        whatsapp: '573506335672',
+        descripcion: 'Precio por kilo.'
+      },
+      {
+        id: 75,
+        nombre: 'Piscos campesinos',
+        categoria: 'alimentos',
+        precio: 20000,
+        vendedor: 'Granja Majanain',
+        whatsapp: '573228866087',
+        descripcion: 'Precio por libra en pie.'
+      },
+      {
+        id: 76,
+        nombre: 'Pollos campesinos',
+        categoria: 'alimentos',
+        precio: 15000,
+        vendedor: 'Granja Majanain',
+        whatsapp: '573228866087',
+        descripcion: 'Precio por libra en pie.'
+      },
+      {
+        id: 77,
+        nombre: 'Cacao procesado',
+        categoria: 'alimentos',
+        precio: 40000,
+        vendedor: 'La Capilla',
+        whatsapp: '573112768008',
+        descripcion: 'Precio por libra, sujeto a la cosecha.'
+      },
+      {
+        id: 78,
+        nombre: 'Café de la región',
+        categoria: 'alimentos',
+        precio: 35000,
+        vendedor: 'La Capilla',
+        whatsapp: '573112768008',
+        descripcion: 'Precio por libra.'
+      },
+      {
+        id: 79,
+        nombre: 'Miel de abejas',
+        categoria: 'alimentos',
+        precio: 15000,
+        precioMaximo: 55000,
+        vendedor: 'Isramiel',
+        whatsapp: '573134247949',
+        descripcion: 'Presentaciones de 150 g a 1 kg.'
+      },
+      {
+        id: 80,
+        nombre: 'Polen',
+        categoria: 'alimentos',
+        precio: 40000,
+        precioMaximo: 60000,
+        vendedor: 'Isramiel',
+        whatsapp: '573134247949',
+        descripcion: 'Presentaciones de 200 g a 400 g.'
+      },
+      {
+        id: 81,
+        nombre: 'Artesanías elaboradas con estériles de esmeralda',
+        categoria: 'artesanía',
+        precio: 150000,
+        precioMaximo: 1000000,
+        imagen: '/images/fundacion-encuentro-esmeraldero.jpeg',
+        vendedor: 'Fundación Encuentro Esmeraldero',
+        whatsapp: '',
+        descripcion: 'La Fundación trabaja en innovación social, responsabilidad ambiental y desarrollo colectivo para fortalecer a las comunidades mineras de la región.'
+      },
+      {
+        id: 82,
+        nombre: 'Miel de abejas por kilo',
+        categoria: 'alimentos',
+        precio: 50000,
+        vendedor: 'MELIAPIS',
+        whatsapp: '573214050272'
+      },
+      {
+        id: 83,
+        nombre: 'Miel de abejas por libra',
+        categoria: 'alimentos',
+        precio: 30000,
+        vendedor: 'MELIAPIS',
+        whatsapp: '573214050272'
+      }
+    ].map(createAdditionalProduct)
 ];
 
   // Datos mock de Empresas
@@ -1032,7 +1301,7 @@ export default function EcommerceArtesanal() {
     {
         "id": 19,
         "nombre": "Asociación de Artesanos de Chivor",
-        "logo": "/images/drive_1d-BSvMtkZ5_oAuYX33Wntyeh3Awml1Aj.jpg",
+        "logo": "/images/chivor-artesanias-pino.png",
         "descripcion": "No No",
         "categoria": "Artesanía",
         "productoEstrellaId": 34,
@@ -1145,6 +1414,141 @@ export default function EcommerceArtesanal() {
         "categoria": "Agrícola",
         "productoEstrellaId": 55,
         "whatsapp": "31820036383177364555"
+    },
+    {
+        "id": 32,
+        "nombre": "Asociación Campesina del Municipio de Duitama",
+        "logo": "/images/default.svg",
+        "descripcion": "Produce alimentos orgánicos de larga vida con trazabilidad agroecológica, preservando el medio ambiente, el valor nutricional y el sabor auténtico del campo.",
+        "categoria": "Alimentos",
+        "productoEstrellaId": 57,
+        "whatsapp": "573108159848"
+    },
+    {
+        "id": 33,
+        "nombre": "Del Altiplano productos lácteos",
+        "logo": "/images/default.svg",
+        "descripcion": "Productos lácteos de la región, como queso pera y queso doble crema.",
+        "categoria": "Alimentos",
+        "productoEstrellaId": 58,
+        "whatsapp": "573103438912"
+    },
+    {
+        "id": 34,
+        "nombre": "crealab",
+        "logo": "/images/default.svg",
+        "descripcion": "Convierte ideas en diseños y productos personalizados, combinando creatividad, calidad e innovación.",
+        "categoria": "Otros",
+        "productoEstrellaId": 60,
+        "whatsapp": "573228847633"
+    },
+    {
+        "id": 35,
+        "nombre": "Bella cosmetics",
+        "logo": "/images/default.svg",
+        "descripcion": "Ofrece productos de belleza y cuidado personal con variedad, precios accesibles y atención cercana.",
+        "categoria": "Artesanía",
+        "productoEstrellaId": 62,
+        "whatsapp": "573116455334"
+    },
+    {
+        "id": 36,
+        "nombre": "Asopezboy",
+        "logo": "/images/default.svg",
+        "descripcion": "Apoya a los campesinos de Puerto Boyacá con productos del campo como yuca y plátano.",
+        "categoria": "Agrícola",
+        "productoEstrellaId": 63,
+        "whatsapp": "573187333569"
+    },
+    {
+        "id": 37,
+        "nombre": "Granos y semillas",
+        "logo": "/images/default.svg",
+        "descripcion": "Ofrece papa nativa y hortalizas orgánicas.",
+        "categoria": "Agrícola",
+        "productoEstrellaId": 65,
+        "whatsapp": "573143279480"
+    },
+    {
+        "id": 38,
+        "nombre": "Masa madre -ORGANIC",
+        "logo": "/images/default.svg",
+        "descripcion": "Elabora panes artesanales de masa madre con harina de trigo de semilla nativa y otros ingredientes seleccionados.",
+        "categoria": "Alimentos",
+        "productoEstrellaId": 67,
+        "whatsapp": "573208339400"
+    },
+    {
+        "id": 39,
+        "nombre": "Mary Luz Lopez Ramirez",
+        "logo": "/images/default.svg",
+        "descripcion": "Artesanías inspiradas en la cultura esmeraldera, réplicas religiosas y pulseras con minerales de esmeralda.",
+        "categoria": "Artesanía",
+        "productoEstrellaId": 69,
+        "whatsapp": "573133929718"
+    },
+    {
+        "id": 40,
+        "nombre": "Merita Daza Artesanías",
+        "logo": "/images/default.svg",
+        "descripcion": "Artesanías en acícula de pino pátula, elaboradas a mano, como bolsos y artículos decorativos.",
+        "categoria": "Artesanía",
+        "productoEstrellaId": 71,
+        "whatsapp": "573106489746"
+    },
+    {
+        "id": 41,
+        "nombre": "Granja integral",
+        "logo": "/images/default.svg",
+        "descripcion": "Producción de pollos semicriollos y abonos orgánicos.",
+        "categoria": "Agrícola",
+        "productoEstrellaId": 73,
+        "whatsapp": "573506335672"
+    },
+    {
+        "id": 42,
+        "nombre": "Granja Majanain",
+        "logo": "/images/default.svg",
+        "descripcion": "Productos de granja campesina: piscos y pollos de campo.",
+        "categoria": "Alimentos",
+        "productoEstrellaId": 75,
+        "whatsapp": "573228866087"
+    },
+    {
+        "id": 43,
+        "nombre": "La Capilla",
+        "logo": "/images/default.svg",
+        "descripcion": "Procesa y comercializa cacao natural y café de la región.",
+        "categoria": "Alimentos",
+        "productoEstrellaId": 77,
+        "whatsapp": "573112768008"
+    },
+    {
+        "id": 44,
+        "nombre": "Isramiel",
+        "logo": "/images/default.svg",
+        "descripcion": "Ofrece miel y derivados apícolas naturales, promoviendo el cuidado de las abejas y la biodiversidad.",
+        "categoria": "Alimentos",
+        "productoEstrellaId": 79,
+        "whatsapp": "573134247949"
+    },
+    {
+        "id": 45,
+        "nombre": "Fundación Encuentro Esmeraldero",
+        "logo": "/images/fundacion-encuentro-esmeraldero.jpeg",
+        "descripcion": "Trabaja en proyectos de innovación social, responsabilidad ambiental y desarrollo colectivo para fortalecer a las comunidades mineras de la región. Ayuda a los artesanos que trabajan con los estériles de la esmeralda. Precios desde $150.000 hasta $1.000.000.",
+        "categoria": "Artesanía",
+        "productoEstrellaId": 81,
+        "whatsapp": ""
+    },
+    {
+        "id": 46,
+        "nombre": "MELIAPIS",
+        "logo": "/images/default.svg",
+        "descripcion": "Protege la vida de las abejas y del planeta mediante la apicultura y sus derivados orgánicos.",
+        "categoria": "Alimentos",
+        "productoEstrellaId": 82,
+        "whatsapp": "573214050272"
     }
 ];
 
@@ -1196,6 +1600,15 @@ export default function EcommerceArtesanal() {
   const getCategoryHeaderClass = (category) => {
     void category;
     return 'bg-gradient-to-br from-[#9CA3A8] via-[#697076] to-[#4A5054]';
+  };
+
+  const formatProductPrice = (product) => {
+    if (product.precio == null) return 'Consultar precio';
+
+    const minimum = `$${product.precio.toLocaleString('es-CO')}`;
+    return product.precioMaximo
+      ? `${minimum} - $${product.precioMaximo.toLocaleString('es-CO')}`
+      : minimum;
   };
 
   const categorias = [
@@ -1276,6 +1689,8 @@ export default function EcommerceArtesanal() {
   };
 
   const addToCart = (producto) => {
+    if (producto.precio == null || !producto.whatsapp) return;
+
     setCartItems(prev => {
       const existing = prev.find(item => item.producto.id === producto.id);
       if (existing) {
@@ -1284,6 +1699,18 @@ export default function EcommerceArtesanal() {
       return [...prev, { producto, cantidad: 1 }];
     });
     setIsCartOpen(true);
+  };
+
+  const handleProductAction = (producto) => {
+    if (!producto.whatsapp) return;
+
+    if (producto.precio == null) {
+      const message = `Hola, quisiera consultar el precio y disponibilidad de ${producto.nombre}.`;
+      window.open(`https://wa.me/${producto.whatsapp}?text=${encodeURIComponent(message)}`, '_blank');
+      return;
+    }
+
+    addToCart(producto);
   };
 
   const removeFromCart = (productoId) => {
@@ -1396,7 +1823,7 @@ export default function EcommerceArtesanal() {
               )}
             </div>
             {/* Mobile Menu Button */}
-            <button 
+            <button
               className="md:hidden p-1 text-gray-500 hover:text-black transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
@@ -1621,11 +2048,12 @@ export default function EcommerceArtesanal() {
                       <p className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wider">{producto.vendedor}</p>
                       <h4 className="text-gray-900 font-bold mb-2 cursor-pointer hover:text-black line-clamp-2" onClick={() => setSelectedProduct(producto)}>{producto.nombre}</h4>
                       <div className="flex items-baseline gap-2 mb-4 mt-auto">
-                        <span className="text-xl font-black text-gray-900">${producto.precio.toLocaleString('es-CO')}</span>
+                        <span className="text-xl font-black text-gray-900">{formatProductPrice(producto)}</span>
                         {producto.precioOriginal && <span className="text-sm text-gray-400 line-through">${producto.precioOriginal.toLocaleString('es-CO')}</span>}
                       </div>
-                      <button onClick={() => addToCart(producto)} className="w-full bg-black hover:bg-gray-800 text-white font-medium py-3 rounded-full transition-colors flex items-center justify-center gap-2">
-                        <ShoppingCart size={18} /> Agregar al Carrito
+                      <button disabled={!producto.whatsapp} onClick={() => handleProductAction(producto)} className="w-full bg-black hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 text-white font-medium py-3 rounded-full transition-colors flex items-center justify-center gap-2">
+                        {!producto.whatsapp || producto.precio == null ? <MessageCircle size={18} /> : <ShoppingCart size={18} />}
+                        {!producto.whatsapp ? 'Contacto por confirmar' : producto.precio == null ? 'Consultar por WhatsApp' : 'Agregar al Carrito'}
                       </button>
                     </div>
                   </div>
@@ -1724,11 +2152,12 @@ export default function EcommerceArtesanal() {
                     <p className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wider">{producto.vendedor}</p>
                     <h4 className="text-gray-900 font-bold mb-2 cursor-pointer hover:text-black line-clamp-2" onClick={() => setSelectedProduct(producto)}>{producto.nombre}</h4>
                     <div className="flex items-baseline gap-2 mb-4 mt-auto">
-                      <span className="text-xl font-black text-gray-900">${producto.precio.toLocaleString('es-CO')}</span>
+                      <span className="text-xl font-black text-gray-900">{formatProductPrice(producto)}</span>
                       {producto.precioOriginal && <span className="text-sm text-gray-400 line-through">${producto.precioOriginal.toLocaleString('es-CO')}</span>}
                     </div>
-                    <button onClick={() => addToCart(producto)} className="w-full bg-black hover:bg-gray-800 text-white font-medium py-3 rounded-full transition-colors flex items-center justify-center gap-2">
-                      <ShoppingCart size={18} /> Agregar al Carrito
+                    <button disabled={!producto.whatsapp} onClick={() => handleProductAction(producto)} className="w-full bg-black hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 text-white font-medium py-3 rounded-full transition-colors flex items-center justify-center gap-2">
+                      {!producto.whatsapp || producto.precio == null ? <MessageCircle size={18} /> : <ShoppingCart size={18} />}
+                      {!producto.whatsapp ? 'Contacto por confirmar' : producto.precio == null ? 'Consultar por WhatsApp' : 'Agregar al Carrito'}
                     </button>
                   </div>
                 </div>
@@ -1885,12 +2314,14 @@ export default function EcommerceArtesanal() {
               <p className="text-gray-600 text-lg mb-6 max-w-2xl">{getCompanyDescription(selectedCompany)}</p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <button 
-                  onClick={() => window.open(`https://wa.me/${selectedCompany.whatsapp}`, '_blank')}
-                  className="bg-[#25D366] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#128C7E] transition-colors flex items-center justify-center gap-2"
-                >
-                  <MessageCircle size={20} /> Contactar Empresa
-                </button>
+                {selectedCompany.whatsapp && (
+                  <button
+                    onClick={() => window.open(`https://wa.me/${selectedCompany.whatsapp}`, '_blank')}
+                    className="bg-[#25D366] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#128C7E] transition-colors flex items-center justify-center gap-2"
+                  >
+                    <MessageCircle size={20} /> Contactar Empresa
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -1926,11 +2357,12 @@ export default function EcommerceArtesanal() {
                   <div className="flex-1 flex flex-col pt-2">
                     <h4 className="text-gray-900 font-bold mb-2 cursor-pointer hover:text-black line-clamp-2 mt-2" onClick={() => setSelectedProduct(producto)}>{producto.nombre}</h4>
                     <div className="flex items-baseline gap-2 mb-4 mt-auto">
-                      <span className="text-xl font-black text-gray-900">${producto.precio.toLocaleString('es-CO')}</span>
+                      <span className="text-xl font-black text-gray-900">{formatProductPrice(producto)}</span>
                       {producto.precioOriginal && <span className="text-sm text-gray-400 line-through">${producto.precioOriginal.toLocaleString('es-CO')}</span>}
                     </div>
-                    <button onClick={() => addToCart(producto)} className="w-full bg-black hover:bg-gray-800 text-white font-medium py-3 rounded-full transition-colors flex items-center justify-center gap-2">
-                      <ShoppingCart size={18} /> Agregar al Carrito
+                    <button disabled={!producto.whatsapp} onClick={() => handleProductAction(producto)} className="w-full bg-black hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 text-white font-medium py-3 rounded-full transition-colors flex items-center justify-center gap-2">
+                      {!producto.whatsapp || producto.precio == null ? <MessageCircle size={18} /> : <ShoppingCart size={18} />}
+                      {!producto.whatsapp ? 'Contacto por confirmar' : producto.precio == null ? 'Consultar por WhatsApp' : 'Agregar al Carrito'}
                     </button>
                   </div>
                 </div>
@@ -2028,18 +2460,19 @@ export default function EcommerceArtesanal() {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">{selectedProduct.vendedor}</span>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">{selectedProduct.nombre}</h3>
               <div className="flex items-end gap-3 mb-4">
-                 <span className="text-3xl font-black text-[#1e5631]">${selectedProduct.precio.toLocaleString('es-CO')}</span>
+                 <span className="text-3xl font-black text-[#1e5631]">{formatProductPrice(selectedProduct)}</span>
                  {selectedProduct.precioOriginal && (
                     <span className="text-lg text-gray-400 line-through mb-1">${selectedProduct.precioOriginal.toLocaleString('es-CO')}</span>
                  )}
               </div>
               <p className="text-gray-600 mb-8">{selectedProduct.descripcion}</p>
               
-              <button 
-                onClick={() => { addToCart(selectedProduct); setSelectedProduct(null); }}
-                className="w-full bg-black text-white font-bold py-4 rounded-full flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors shadow-lg"
+              <button disabled={!selectedProduct.whatsapp}
+                onClick={() => { handleProductAction(selectedProduct); setSelectedProduct(null); }}
+                className="w-full bg-black text-white font-bold py-4 rounded-full flex items-center justify-center gap-2 hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 transition-colors shadow-lg"
               >
-                <ShoppingCart size={20} /> Agregar al Carrito
+                {!selectedProduct.whatsapp || selectedProduct.precio == null ? <MessageCircle size={20} /> : <ShoppingCart size={20} />}
+                {!selectedProduct.whatsapp ? 'Contacto por confirmar' : selectedProduct.precio == null ? 'Consultar por WhatsApp' : 'Agregar al Carrito'}
               </button>
             </div>
           </div>
@@ -2084,7 +2517,7 @@ export default function EcommerceArtesanal() {
                               <img src={item.producto.imagen} alt={item.producto.nombre} className="w-16 h-16 object-cover rounded-xl bg-gray-50" />
                               <div className="flex-1">
                                 <h4 className="text-sm font-medium text-gray-900 line-clamp-2">{item.producto.nombre}</h4>
-                                <p className="text-black font-bold mt-1">${item.producto.precio.toLocaleString('es-CO')}</p>
+                                <p className="text-black font-bold mt-1">{formatProductPrice(item.producto)}</p>
                                 
                                 <div className="flex items-center justify-between mt-2">
                                   <div className="flex items-center border border-gray-200 rounded-lg bg-gray-50">
